@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ ! -f .env ]
+then
+  export $(cat .env | xargs)
+fi
+
+genql --endpoint https://backboard.railway.app/graphql/v2 --output ./src/lib/api/ -H "Authorization: Bearer $RAILWAY_TOKEN"
